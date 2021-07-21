@@ -1,0 +1,139 @@
+setTextBack();
+		gotoxy(120, 35);
+		pSWT( "Очнулся наконец,");
+		if (player.race == "Эльф")
+			pSWT( "остроухий...");
+		else if (player.race == "Дворф")
+			pSWT( "крепыш...");
+		else if (player.race == "Человек")
+			pSWT("бродяга...");
+		Sleep(200);
+		char f;bool flag = 1;
+		gotoxy(10, 35);
+		cout << "1.Ответить ГРУБО";
+		gotoxy(10, 37);
+		cout << "2.Ответить ВЕЖЛИВО";
+		gotoxy(10, 39);
+		cout << "3.Ответить ЕХИДНО";
+
+		gotoxy(10, 42);
+		cout << "4.Промолчать";
+		
+		while (flag)
+		{
+			f = getch();
+			
+			switch (f)
+			{
+			case'1':
+				gotoxy(40, 35);
+				cout << "*ГРУБО*";
+				pSWT(" Да как ты посмел меня так звать!?");
+				player.strength += 10 * (1. / player.difficulty);
+				player.iq -= 10 * player.difficulty;
+				player.bad++;
+				gotoxy(10, 35);
+				cout << "                ";
+				gotoxy(10, 37);
+				cout << "                  ";
+				gotoxy(10, 39);
+				cout << "                 ";
+				gotoxy(10, 42);
+				cout << "            ";
+				gotoxy(97, 37);
+				pSWT("А ты посмел грубить начальнику тюрьмы?! Паршивец.");
+				gotoxy(97, 39);
+				pSWT("Быстро признавайся! Кто ты!?");
+				gotoxy(10, 35);
+				cout << "1.Сказать правду";
+				gotoxy(10, 37);
+				cout << "2.Солгать";
+				gotoxy(10, 39);
+				cout << "";
+
+				gotoxy(10, 42);
+				cout << "3.Промолчать";
+				while (flag)
+				{
+					f = getch();
+					switch (f)
+					{
+					case '1':
+						player.good++;
+						player.strength += 10 * (1. / player.difficulty);
+						gotoxy(120, 35);
+						pSWT("Видимо ты действительно ничего не помнишь...");
+						gotoxy(120, 37);
+						pSWT("Мы нашли тебя в рейде кочевников-убийц, все пленные");
+						gotoxy(128, 38);
+						pSWT("которых мы захватили ничего о тебе не знают...");
+
+						flag = 0; break;
+					case '2':
+						player.bad++;
+						flag = 0; break;
+					case '3':player.neutral++;
+						
+						flag = 0; break;
+
+					default:
+						break;
+					}
+				}
+
+				 flag = 0;
+				break;
+			case'2':
+				player.strength -= 3 * player.difficulty;
+				player.iq += 10 * (1. / player.difficulty);
+				player.good++;
+				gotoxy(10, 35);
+				cout << "                ";
+				gotoxy(10, 37);
+				cout << "                  ";
+				gotoxy(10, 39);
+				cout << "                 ";
+
+				gotoxy(10, 42);
+				cout << "            "; flag = 0;
+				gotoxy(90, 37);
+				pSWT("Это хорошо, что ты ко мне с уважением, но кто ты таков?");
+				gotoxy(133, 40);
+				pSWT(" Откуда ты?.");
+				break;
+			case'3':
+				player.agility += 10 * (1. / player.difficulty);
+				player.iq += 2 * (1. / player.difficulty);
+				player.bad++;
+				gotoxy(10, 35);
+				cout << "                ";
+				gotoxy(10, 37);
+				cout << "                  ";
+				gotoxy(10, 39);
+				cout << "                 ";
+
+				gotoxy(10, 42);
+				cout << "            ";
+				flag = 0;
+				break;
+			case'4':gotoxy(10, 35);
+				player.iq += 10 * (1. / player.difficulty);
+				player.neutral++;
+				cout << "                ";
+				gotoxy(10, 37);
+				cout << "                  ";
+				gotoxy(10, 39);
+				cout << "                 ";
+
+				gotoxy(10, 42);
+				cout << "            "; 
+				flag = 0;
+				gotoxy(110, 37);
+				pSWT("Мы уж думали никогда не очнёшься.");
+				gotoxy(110, 39);
+				pSWT("Ну давай, рассказывай кто-таков и откуда родом?");
+				break;
+			default:
+				break;
+			}
+		}
